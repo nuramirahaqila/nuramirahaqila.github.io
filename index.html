@@ -1,0 +1,522 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Mobile Programming e-Portfolio by NUR AMIRAH AQILA BINTI MOKHTAR"> <title>FoodLink e-Portfolio | A210401</title> <style> :root { --green-900: #123524; --green-800: #1b5e3a; --green-700: #2e7d32; --green-600: #43a047; --green-100: #e8f5e9; --cream: #fffdf4; --white: #ffffff; --text: #1f2933; --muted: #5f6f64; --shadow: 0 12px 30px rgba(18, 53, 36, 0.12); --radius: 20px; --max-width: 1120px; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(100% - 32px, var(--max-width));
+  margin: 0 auto;
+}
+
+header {
+  background: linear-gradient(135deg, var(--green-900), var(--green-700));
+  color: var(--white);
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(18, 53, 36, 0.96);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+.nav-inner {
+  min-height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  list-style: none;
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--white);
+  font-size: 0.92rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.hero {
+  padding: 84px 0 76px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  max-width: 720px;
+  color: #eef8ee;
+  font-size: 1.08rem;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.profile-card ul {
+  list-style: none;
+}
+
+.profile-card li {
+  margin-bottom: 12px;
+}
+
+.profile-card strong {
+  display: block;
+  color: #d7f7d8;
+  font-size: 0.86rem;
+}
+
+main section {
+  padding: 74px 0;
+}
+
+.section-title {
+  margin-bottom: 12px;
+  color: var(--green-900);
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  line-height: 1.2;
+}
+
+.section-intro {
+  max-width: 780px;
+  margin-bottom: 34px;
+  color: var(--muted);
+}
+
+.sdg-box {
+  background: var(--green-100);
+  border-left: 8px solid var(--green-700);
+  border-radius: var(--radius);
+  padding: 26px;
+  box-shadow: var(--shadow);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+article.card {
+  background: var(--white);
+  border: 1px solid rgba(46, 125, 50, 0.14);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--green-100);
+  color: var(--green-800);
+  font-weight: 800;
+  font-size: 0.84rem;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: var(--green-900);
+  font-size: 1.32rem;
+}
+
+.card p {
+  margin-bottom: 16px;
+  color: var(--muted);
+}
+
+.video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px;
+  margin: 18px 0;
+  background: #dfeee2;
+}
+
+.video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.reflection {
+  padding: 16px;
+  border-radius: 16px;
+  background: #f5fbf5;
+  border: 1px solid rgba(46, 125, 50, 0.12);
+}
+
+.reflection strong {
+  color: var(--green-800);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: var(--green-700);
+  color: var(--white);
+  font-weight: 800;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--green-900);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.journey {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(46, 125, 50, 0.14);
+}
+
+.skills-list,
+.resources-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+}
+
+.skills-list li,
+.resources-list li {
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: var(--green-100);
+  color: var(--green-900);
+  font-weight: 700;
+  font-size: 0.93rem;
+}
+
+.resources-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(46, 125, 50, 0.14);
+}
+
+.resources-card h3 {
+  margin: 24px 0 12px;
+  color: var(--green-900);
+}
+
+.resources-card h3:first-child {
+  margin-top: 0;
+}
+
+footer {
+  padding: 32px 0;
+  background: var(--green-900);
+  color: var(--white);
+  text-align: center;
+}
+
+footer p {
+  color: #e4f5e7;
+}
+
+@media (max-width: 820px) {
+  .nav-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 0;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .nav-links a {
+    padding: 7px 10px;
+    font-size: 0.86rem;
+  }
+
+  .hero {
+    padding: 54px 0 58px;
+  }
+
+  .hero-grid,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  main section {
+    padding: 54px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: min(100% - 24px, var(--max-width));
+  }
+
+  .profile-card,
+  article.card,
+  .journey,
+  .resources-card,
+  .sdg-box {
+    padding: 20px;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+}
+
+</style> </head> <body> <nav aria-label="Main navigation"> <div class="container nav-inner"> <a href="#home" class="brand" aria-label="FoodLink e-Portfolio Home">FoodLink e-Portfolio</a> <ul class="nav-links"> <li><a href="#home">Home</a></li> <li><a href="#labs">Labs</a></li> <li><a href="#projects">Projects</a></li> <li><a href="#reflection">Reflection</a></li> <li><a href="#skills">Skills</a></li> <li><a href="#resources">Resources</a></li> </ul> </div> </nav> <header id="home"> <div class="container hero"> <div class="hero-grid"> <div> <span class="eyebrow">SDG 2: Zero Hunger Mobile Application Portfolio</span> <h1>Mobile Programming Learning Journey</h1> <p>I am a Bachelor of Software Engineering student developing mobile applications using Kotlin and Jetpack Compose. This e-Portfolio documents my learning progress from basic UI design to a more advanced mobile application with local storage, API integration, cloud database, and sensor features. Through this project, I explored how mobile technology can support real-world social issues through an SDG-based application.</p> </div> <aside class="profile-card" aria-label="Student information"> <ul> <li><strong>Name</strong>NUR AMIRAH AQILA BINTI MOKHTAR</li> <li><strong>Matric No</strong>A210401</li> <li><strong>Programme</strong>Bachelor of Software Engineering</li> <li><strong>Instructor</strong>Mr Nelson Sana</li> </ul> </aside> </div> </div> </header> <main> <section id="sdg" aria-labelledby="sdg-title"> <div class="container"> <h2 class="section-title" id="sdg-title">SDG Focus</h2> <div class="sdg-box" role="img" aria-label="Green SDG 2 Zero Hunger themed information box"> <p><strong>SDG 2: Zero Hunger</strong>, because reducing food waste and improving food accessibility can help support communities and encourage more responsible food management.</p> </div> </div> </section>
+
+<section id="labs" aria-labelledby="labs-title">
+  <div class="container">
+    <h2 class="section-title" id="labs-title">Labs</h2>
+    <p class="section-intro">These lab activities show my progress from basic user interface design to navigation and local database storage.</p>
+
+    <div class="grid">
+      <article class="card">
+        <span class="label">Lab 1</span>
+        <h3>Lab 1: UI</h3>
+        <p>Basic mobile user interface development using Kotlin and Jetpack Compose.</p>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/M3qTu4IT2ZU" title="Lab 1 UI video" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <p class="reflection"><strong>Reflection:</strong> In Lab 1, I learned how to build a basic mobile user interface using Jetpack Compose. This lab helped me understand layout structure, text, buttons, and how visual design affects the user experience.</p>
+      </article>
+
+      <article class="card">
+        <span class="label">Lab 2</span>
+        <h3>Lab 2: Interaction</h3>
+        <p>Adding interaction and user input response to a mobile application.</p>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/sjYqY1hdfW8" title="Lab 2 Interaction video" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <p class="reflection"><strong>Reflection:</strong> In Lab 2, I learned how to add interaction to the application and respond to user input. This helped me understand how state changes can make the app feel more dynamic and useful.</p>
+      </article>
+
+      <article class="card">
+        <span class="label">Lab 3</span>
+        <h3>Lab 3: Material Design</h3>
+        <p>Improving interface consistency using Material Design components.</p>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/sDIkLLk-SFs" title="Lab 3 Material Design video" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <p class="reflection"><strong>Reflection:</strong> In Lab 3, I explored Material Design components to improve the appearance and consistency of the app. I learned how proper styling, spacing, colours, and components can make the interface easier to use.</p>
+      </article>
+
+      <article class="card">
+        <span class="label">Lab 4</span>
+        <h3>Lab 4: Navigation</h3>
+        <p>Creating multiple app screens and navigation flow using Jetpack Compose Navigation.</p>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/j0iqtcSpyLk" title="Lab 4 Navigation video" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <p class="reflection"><strong>Reflection:</strong> In Lab 4, I learned how to create multiple screens and navigate between them using Jetpack Compose Navigation. This lab was important because it helped me structure the application flow more clearly.</p>
+      </article>
+
+      <article class="card">
+        <span class="label">Lab 5</span>
+        <h3>Lab 5: Room</h3>
+        <p>Using Room Database to store and manage local data on the device.</p>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/k37qG79uE6k" title="Lab 5 Room Database video" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <p class="reflection"><strong>Reflection:</strong> In Lab 5, I learned how to use Room Database to store data locally on the device. This helped me understand how mobile apps can keep important user data even after the app is closed.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects" aria-labelledby="projects-title">
+  <div class="container">
+    <h2 class="section-title" id="projects-title">Projects</h2>
+    <p class="section-intro">FoodLink is an SDG-based mobile application developed to support better food management and reduce food waste.</p>
+
+    <div class="grid">
+      <article class="card">
+        <span class="label">Project 1</span>
+        <h3>Project 1: FoodLink</h3>
+        <p><strong>Lab 4 + Working Features</strong></p>
+        <p>Food waste is a common issue where usable food may be thrown away instead of being managed properly. FoodLink was developed to support SDG 2: Zero Hunger by helping users organise food-related information and encourage more responsible food usage.</p>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/Qn1K8rrdhKU" title="Project 1 FoodLink VSR video" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <p class="reflection"><strong>Reflection:</strong> Through Project 1, I learned how to combine navigation, screen structure, and working app features into one complete mobile application. I also understood the importance of designing an app around a real SDG problem instead of only focusing on technical requirements.</p>
+        <a class="btn" href="https://github.com/nuramirahaqila/A210401_NurAmirah_MrNelson_Project1" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </article>
+
+      <article class="card">
+        <span class="label">Project 2</span>
+        <h3>Project 2: FoodLink</h3>
+        <p><strong>Lab 5 + API + Sensors + Cloud</strong></p>
+        <p>Many users may struggle to track food information, store food records, and connect food-related data with real-time or shared information. Project 2 upgrades FoodLink with Room Database, Firebase Firestore, API integration, and GPS sensor features to make the application more connected and useful.</p>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/9Pj8xpzBjC4" title="Project 2 FoodLink VSR video" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <p class="reflection"><strong>Reflection:</strong> In Project 2, I learned how to integrate advanced mobile development features such as Room, Firebase Firestore, Retrofit API, and GPS sensor. This project helped me understand how modern mobile applications combine local data, cloud storage, internet data, and hardware features to solve real-world problems.</p>
+        <a class="btn" href="https://github.com/nuramirahaqila/A210401_NurAmirah_MrNelson_Project2" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="reflection" aria-labelledby="reflection-title">
+  <div class="container">
+    <h2 class="section-title" id="reflection-title">Reflection & Learning Journey</h2>
+    <article class="journey">
+      <p>My learning journey from Lab 1 to Project 2 showed me how mobile application development grows step by step, starting from simple UI design and moving toward a complete functional application. I faced challenges in understanding navigation, database logic, API integration, and cloud storage, but each lab helped me build the foundation needed for the final project. Through FoodLink, I learned that technology can be used to support SDG 2 by encouraging better food management and reducing waste. Overall, this course improved my confidence in using Kotlin, Jetpack Compose, and mobile development tools.</p>
+    </article>
+  </div>
+</section>
+
+<section id="skills" aria-labelledby="skills-title">
+  <div class="container">
+    <h2 class="section-title" id="skills-title">Skills & Tech Stack</h2>
+    <ul class="skills-list" aria-label="Skills and technology stack">
+      <li>Kotlin</li>
+      <li>Jetpack Compose</li>
+      <li>Android Studio</li>
+      <li>Navigation Compose</li>
+      <li>ViewModel</li>
+      <li>Room Database</li>
+      <li>Firebase Firestore</li>
+      <li>Retrofit</li>
+      <li>REST API</li>
+      <li>OpenFoodFacts API</li>
+      <li>Google Play Services Location</li>
+      <li>GPS Sensor</li>
+      <li>Material Design</li>
+      <li>Gradle</li>
+      <li>GitHub</li>
+      <li>GitHub Pages</li>
+      <li>YouTube Unlisted Video Embedding</li>
+    </ul>
+  </div>
+</section>
+
+<section id="resources" aria-labelledby="resources-title">
+  <div class="container">
+    <h2 class="section-title" id="resources-title">Resources</h2>
+    <div class="resources-card">
+      <h3>APIs & Databases</h3>
+      <ul class="resources-list">
+        <li>OpenFoodFacts API</li>
+        <li>Firebase Firestore</li>
+        <li>Room Database</li>
+        <li>REST API</li>
+      </ul>
+
+      <h3>Libraries & Frameworks</h3>
+      <ul class="resources-list">
+        <li>Kotlin</li>
+        <li>Jetpack Compose</li>
+        <li>AndroidX Navigation</li>
+        <li>Retrofit</li>
+        <li>Gson Converter</li>
+        <li>Google Play Services Location</li>
+      </ul>
+
+      <h3>Tools</h3>
+      <ul class="resources-list">
+        <li>Android Studio</li>
+        <li>GitHub</li>
+        <li>GitHub Pages</li>
+        <li>YouTube</li>
+      </ul>
+
+      <h3>AI Assistance Acknowledgement</h3>
+      <p>AI assistance from ChatGPT was used for guidance, code understanding, reflection writing, and e-Portfolio preparation.</p>
+    </div>
+  </div>
+</section>
+
+</main> <footer> <div class="container"> <p>NUR AMIRAH AQILA BINTI MOKHTAR | A210401 | 2026</p> </div> </footer> <script> const navLinks = document.querySelectorAll('nav a[href^="#"]'); navLinks.forEach((link) => { link.addEventListener('click', () => { navLinks.forEach((item) => item.removeAttribute('aria-current')); link.setAttribute('aria-current', 'page'); }); }); </script> </body> </html>
